@@ -1,0 +1,18 @@
+sudo: required
+env:
+        - secure: nthXUOvWn8Rwk8YuhB1Z1A/sRKNW8OvBsHXBJoWW+X8yx6RhL5FWzO4KdI7KYxV7rGYlnYB1Hal6kVO35j9viGmyAxhCtSkc0CvT3jmNp+670/+fkxTiM/rxQ0fhLh16JrQz8IZmC3jADOSHcsAvqa1Es5vcNvuElf4OMxDA4XQlcV8z2rJ+p5vDTboPtfBJXplFctdwNIWgrHXHCVr9775fFonl6oWJQ/x4yd9C4nW6vtwF6bW602vDF9tAU6rElD4MZdx+tU9NbxejnO4lpfiI9APF2E/874AL+vjKDirHVyzb2zVe0k+IIWuYPeGYct24PbtSuq8zFDkJk4XE839eiLx9eB+q5h5bL7Mpjnx95sCak/H3nYFY3eOT0kEmhAM86tqoettWoLnrTSEi8usVDn8PYZkQQG22Z9qfbOln56KWeKF4yYreFlLBhvQV5B2wwgYCmjMVvDbRyd1jh7daEi0yUJqT/gPxgZk1LHt/2SxO/95WFBl1Jg4T9ab6phu/ML0bgd9WjBphcqyWoKUqsz2zRVjbghF8jbhEB8NvjKakfRgGjHCBEF2MywJ8CEFa++/R4WnahvMbRYQg10k02nvGoQd9dabigJ7j11zwvo1r09S4hibcytlclAyE82BH4CA3BgpJKSFsICOG0/ustQ+aTQ28oHwGVTvxg9s=  
+        - VERSION=0.5
+
+services:
+        - docker
+
+before_script:
+        - docker --version
+        - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
+
+script:
+        - docker build -t celiangarcia/firefly-server:$VERSION firefly-server/$VERSION/
+
+after_success:
+        - docker push celiangarcia/firefly-server:$VERSION
+
