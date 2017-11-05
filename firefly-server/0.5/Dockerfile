@@ -3,8 +3,9 @@ FROM celiangarcia/gcc7-cmake:3.9.0
 ENV TERM xterm-256color
 
 # Add the PostgreSQL PGP key to verify their Debian packages.
-# It should be the same key as https://www.postgresql.org/media/keys/ACCC4CF8.asc
-RUN sudo apt-key adv --keyserver hkp://wwwkeys.pgp.net --recv-keys B97B0AFCAA1A47F044F244A07FCC7D46ACCC4CF8
+RUN wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add -
+RUN echo "deb http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -cs)-pgdg main 10" > /etc/apt/sources.list.d/pgdg.list
+
 
 # Add PostgreSQL's repository. It contains the most recent stable release
 RUN echo "deb http://apt.postgresql.org/pub/repos/apt/ precise-pgdg main" > /etc/apt/sources.list.d/pgdg.list
