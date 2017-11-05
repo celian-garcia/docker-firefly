@@ -1,20 +1,12 @@
 sudo: required
 env:
-        global:
-	        - secure: "MPnWqDm+Qp96pu9wXqVWW38ehKb+kRdUluqjaNA0HqOlY30qXPckdwD3NlwwubrKpcRyCvEq2AxztskIS/JBnwQ2BPYvSakpoMeGJcukMFdaOHPLHKZCwbBulmEct5cCdDuEIT4BhWBcP70RFlZGNyfTe7KXJqWwbDLKP4ILOhjdDBJtbBOI8L1DUlugIS51g168XwZSZAzAINu8yp7sp0NMNcSwwug347enLDEsjQR/eEnnr7nnsBlEvL9gjn5xEg7FY8qv4tyi184VGtYXvWfqlr8EhP8pkwri2bJraa52jXSB12mXZmm5yGnHjeYpN3N8db6U528ohcqgRzRjvZ+Shpp2xTCATGfs+FoGOG1e0ChnpawmUQHoY+f4EvprQpkiN76qVWEC53bhIHIlHwq70bMR/Wr/aR+DXY+fTGOTSHTua5L78X3cbpoqad43z6z0BhIjlK/oKdagVe2xVlYX94hIbHzI5+Yx8pYNm8C+IY7yuAQ7zTPgQ8x5fMYJuZmxuWGo18UoFEneMdjwxuJyIVt4zEF4cpB1Tes2FTojh9dLtpJZTduU/LcYgJSN+5nou/OBioKTpa49BSPORmGVXSVuIn7Y076URXM0BVJ+EjDV0f5g2ZcvfuqpRjBikiZSkx20Rp8eXJjfzkiVW4g2m2hWW4stfeP2Upx2qaE="
-	        - secure: "ZbTao5dmbHqGIMFY2j+24lSXRwjuFGtputTekBRjOGc6Wxw1NKZub/yotX/nab/KRrmj00YFr6riz8qi+TpVjF7vKq0noWwwlEVF5Y5SVfUcS47wT5IUo5AMj+XhcCXxAOfBXiht8oCvaE2z/eh8PmqD4UN9SuUjflddAQhDcQObOsRLL/QUEqiQ2kMwrUBRkkxc2YypiDy7Ch3GmkfqkkAQuWlzuju0pnRaoNMsfIuOAyoOWCdHzQrUQDs/RA/MEEMv5x4bGNxNr5EXXcA22dT9KgOQ7tN/lFJ4thuHY635Vcq2ZyDjEgmPCWDWJ8ttoMm2fJrFAAQbFtRaTouOdH2LJGWNW454DCd3XlqIzHMqnPrvbJf6TvS86QFba6loHl0LQJy4VhrKRWk8Y+y0CX0tVtzoFP5RBTTUOSPgKySMDtkjbgjg07h4kxY7b9tBfIkys2ayqqTk2rPBJ7JFdtDb+wUnlT56hXEOSPUtywn0ooC+5ZCJJIRWhXIOk1MQ/pc71mXT+Z6da4962YHIoM1gF365zHbGMCFX64mcsK5lRnDOKZehN2dtvBQvc3ww2vfe0W7kneYSCtQzvds6Z6jmfoSv2pEZrp/Wb53DqBNXtST8yoYoaGZx+gpo7p9Cj0xQJLIS7MtdNsIbkl/TvbnQv2Q17BBp1CiaqxbXR5Q="
-                - VERSION=0.5
-
+  secure: Y1AWO7zfZWkhc/18KrIgX0YtgxCGwmzo3qH+VaD1zr4xr1FD8UAY/ymFxtBm/S+uBn7clpPxlvDCoOrXLwzKoy2bFGZWRMOATHfIWyY7E3V8MhTpPBkmtUoDJ57vbsB2ugQr/swQL4J2zYUCpPfKxEDU8Z5zM6XnMcj+xX1f6ahLQ8WG5kcJfKcAinIeNDWAjenxG87dlVLzRqhGHWQO+Z4BLhnG3cJ7eD/RV/1gM6SAwxW1ZSYs0feIsXEm20zNFZIfMeOkMz37eKgxuCfN6IwvlqEbLiE+hJDgNI6C/ZKs43poMhWmtqQJC8A1LVH7X81RvsInN2s9utSgImWV9npfiiCLKnH+gpVvHTdFR52fbf3suF5iGd62VJI9XjPE8oVUMVG5qFS81WaHz63xamWHHvw3KoAdXXTzuwtHuP3SlCK3OHymMkyNZpEXTBn50F80zFPKdDyk2XRtes3ZObASGgwB9ZIhywwQeif2wX0bzZ4f7ywUb+o3O9OQ+MB62oKfx0Gqj5ie9MBuIdWPkhgCwOJS5ybqN2edaK7f0yYt4xKn0nf4am5ShkzETliwZNF1pwhxOU+DWGVmRCmZghJL0EGxZOf4OQ8sVHm1hUSyQICGncGXM5O8F98Ujykzbes4OBML1JpQLw1y/QFeknjKxWsGwKtzUxvsnv5+jmU=
 services:
-        - docker
-
+- docker
 before_script:
-        - docker --version
-        - docker login -u $DOCKER_USER -p $DOCKER_PASS
-
+- docker --version
+- docker login -u $DOCKER_USER -p $DOCKER_PASS
 script:
-        - docker build -t celiangarcia/firefly-server:$VERSION firefly-server/$VERSION/
-
+- docker build -t celiangarcia/firefly-server:0.5 firefly-server/$VERSION/
 after_success:
-        - docker push celiangarcia/firefly-server:$VERSION
-
+- docker push celiangarcia/firefly-server:0.5
