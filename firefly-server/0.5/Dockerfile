@@ -35,3 +35,16 @@ RUN apt-get install -y libgtest-dev \
     && cmake .. \
     && make -j 12 \
     && make install
+    
+# Fly library installation
+ARG fly_version=0.1
+ENV fly_version=${fly_version}
+RUN cd /usr/src 
+    && wget https://github.com/celian-garcia/fly/archive/v{fly_version}.tar.gz
+    && tar xfz fly-{fly_version}.tar.gz
+    && cd fly-{fly_version}
+    && mkdir build
+    && cd build
+    && cmake ..
+    && make
+    && make install
