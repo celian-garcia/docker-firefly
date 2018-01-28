@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/celian-garcia/docker-firefly.svg?branch=master)](https://travis-ci.org/celian-garcia/docker-firefly)
 # Docker files of Firefly project
 
 This repository contains docker files used by the Firefly project.
