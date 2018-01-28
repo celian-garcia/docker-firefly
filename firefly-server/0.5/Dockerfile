@@ -43,7 +43,7 @@ RUN cd /usr/src \
     && wget https://github.com/celian-garcia/fly/archive/v${fly_version}.tar.gz \
     && tar xfz v${fly_version}.tar.gz \
     && ls -l \
-    && cd v${fly_version} \
+    && cd fly-${fly_version} \
     && mkdir build \
     && cd build \
     && cmake .. \
