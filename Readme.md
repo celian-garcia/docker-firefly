@@ -7,4 +7,4 @@ This repository contains docker files used by the Firefly project.
 
 Dockerfile containing dependencies of firefly-server. <br>
 There is a folder by version of firefly-server.
-
+If the wanted version is not present, use the first which comes before it. 
