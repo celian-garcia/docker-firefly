@@ -6,13 +6,13 @@ jobs:
      - checkout
      # using private Docker image
      # with credentials stored in the UI
-     - run: ./.circleci/if_folder_has_changed.sh firefly-server/0.5 "docker login -u $DOCKER_USER -p $DOCKER_PASS"
+     - run: bash .circleci/if_folder_has_changed.sh firefly-server/0.5 "docker login -u $DOCKER_USER -p $DOCKER_PASS"
 
      # build the application image
-     - run: ./.circleci/if_folder_has_changed.sh firefly-server/0.5 "docker build -t $DOCKER_USER/firefly-server:0.5 firefly-server/0.5/"
+     - run: bash .circleci/if_folder_has_changed.sh firefly-server/0.5 "docker build -t $DOCKER_USER/firefly-server:0.5 firefly-server/0.5/"
 
      # deploy the image
-     - run: ./.circleci/if_folder_has_changed.sh firefly-server/0.5 "docker push $DOCKER_USER/firefly-server:0.5"
+     - run: bash .circleci/if_folder_has_changed.sh firefly-server/0.5 "docker push $DOCKER_USER/firefly-server:0.5"
  
  build/firefly-server:0.5bis:
    machine: true
@@ -20,13 +20,13 @@ jobs:
      - checkout
      # using private Docker image
      # with credentials stored in the UI
-     - run: ./.circleci/if_folder_has_changed.sh firefly-server/0.5 "docker login -u $DOCKER_USER -p $DOCKER_PASS"
+     - run: bash .circleci/if_folder_has_changed.sh firefly-server/0.5 "docker login -u $DOCKER_USER -p $DOCKER_PASS"
 
      # build the application image
-     - run: ./.circleci/if_folder_has_changed.sh firefly-server/0.5 "docker build -t $DOCKER_USER/firefly-server:0.5 firefly-server/0.5/"
+     - run: bash .circleci/if_folder_has_changed.sh firefly-server/0.5 "docker build -t $DOCKER_USER/firefly-server:0.5 firefly-server/0.5/"
 
      # deploy the image
-     - run: ./.circleci/if_folder_has_changed.sh firefly-server/0.5 "docker push $DOCKER_USER/firefly-server:0.5"
+     - run: bash .circleci/if_folder_has_changed.sh firefly-server/0.5 "docker push $DOCKER_USER/firefly-server:0.5"
 
 workflows:
   version: 2
