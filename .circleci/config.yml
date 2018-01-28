@@ -1,3 +1,11 @@
+####
+# Inspired from two circle ci configurations :
+# - https://github.com/decidim/decidim/pull/2028/files
+# - https://gist.github.com/naesheim/18d0c0a58ee61f4674353a2f4cf71475
+#
+# The purpose here is to trigger a build only if a specific folder has been modified.
+####
+
 version: 2
 jobs:
  build/firefly-server:0.5:
@@ -13,24 +21,26 @@ jobs:
 
      # deploy the image
      - run: bash .circleci/if_folder_has_changed.sh firefly-server/0.5 "docker push $DOCKER_USER/firefly-server:0.5"
- 
- build/firefly-server:0.5bis:
-   machine: true
-   steps:
-     - checkout
-     # using private Docker image
-     # with credentials stored in the UI
-     - run: bash .circleci/if_folder_has_changed.sh firefly-server/0.5 "docker login -u $DOCKER_USER -p $DOCKER_PASS"
 
-     # build the application image
-     - run: bash .circleci/if_folder_has_changed.sh firefly-server/0.5 "docker build -t $DOCKER_USER/firefly-server:0.5 firefly-server/0.5/"
-
-     # deploy the image
-     - run: bash .circleci/if_folder_has_changed.sh firefly-server/0.5 "docker push $DOCKER_USER/firefly-server:0.5"
+## Uncomment and replace XX with new version
+# build/firefly-server:XX:
+#   machine: true
+#   steps:
+#     - checkout
+#     # using private Docker image
+#     # with credentials stored in the UI
+#     - run: bash .circleci/if_folder_has_changed.sh firefly-server/XX "docker login -u $DOCKER_USER -p $DOCKER_PASS"
+#
+#     # build the application image
+#     - run: bash .circleci/if_folder_has_changed.sh firefly-server/XX "docker build -t $DOCKER_USER/firefly-server:XX firefly-server/XX/"
+#
+#     # deploy the image
+#     - run: bash .circleci/if_folder_has_changed.sh firefly-server/XX "docker push $DOCKER_USER/firefly-server:XX"
 
 workflows:
   version: 2
   build_and_deploy_all:
     jobs:
       - build/firefly-server:0.5
-      - build/firefly-server:0.5bis
+## Uncomment and replace XX with new version
+#      - build/firefly-server:XX
