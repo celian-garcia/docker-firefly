@@ -1,10 +1,9 @@
-[![Build Status](https://travis-ci.org/celian-garcia/docker-firefly.svg?branch=master)](https://travis-ci.org/celian-garcia/docker-firefly)
 # Docker files of Firefly project
 
 This repository contains docker files used by the Firefly project.
 
-### firefly-server : 
+## Docker Registry deployments
 
-Dockerfile containing dependencies of firefly-server. <br>
-There is a folder by version of firefly-server.
-If the wanted version is not present, use the first which comes before it. 
+| Docker image  | Tag     | Built and pushed |
+| ------------- | ------- | ---------------- |
+| [celiangarcia/firefly-server](https://hub.docker.com/r/celiangarcia/firefly-server/) | 0.5 | [![CircleCI](https://circleci.com/gh/celian-garcia/docker-firefly/tree/master.svg?style=svg)](https://circleci.com/gh/celian-garcia/docker-firefly/tree/master) |
