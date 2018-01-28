@@ -28,16 +28,16 @@ RUN apt-get update \
 #     && ./b2 --without-python --prefix=/usr -j 4 link=shared runtime-link=shared install \
 #     && cd .. && rm -rf ${boost_dir} && ldconfig
 
-# # Google test installation
-# RUN apt-get install -y libgtest-dev \
-#     && cd /usr/src/gtest \
-#     && mkdir build && cd build \
-#     && cmake .. \
-#     && make -j 12 \
-#     && make install
+# Google test installation
+RUN apt-get install -y libgtest-dev \
+    && cd /usr/src/gtest \
+    && mkdir build && cd build \
+    && cmake .. \
+    && make -j 12 \
+    && make install
     
 # Fly library installation
-ARG fly_version=0.1
+ARG fly_version=0.2
 ENV fly_version ${fly_version}
 RUN cd /usr/src \
     && wget https://github.com/celian-garcia/fly/archive/v${fly_version}.tar.gz \
