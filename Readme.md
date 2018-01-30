@@ -2,7 +2,7 @@
 
 # Docker files of Firefly project
 
-This repository contains docker files used by the Firefly project.
+This repository contains docker files used by the Firefly project. <br>
 Each image/version folder is automatically deployed if and only if there is a diff between this folder and the same folder of the previous commit.
 
 ## Docker Registry deployments
