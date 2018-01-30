@@ -27,7 +27,6 @@ jobs:
       # deploy the image
       - run: bash .circleci/if_folder_has_changed.sh $FOLDER/$VERSION "docker push $DOCKER_USER/$FOLDER:$VERSION"
 
-
   build-deploy/firefly-database-base:0.1:
     machine: true
     environment:
@@ -48,8 +47,8 @@ workflows:
     jobs:
       - login
       - build-deploy/firefly-api-base:0.1:
-	  requires:
-	    - login
+          requires:
+            - login
       - build-deploy/firefly-database-base:0.1:
           requires:
             - login
