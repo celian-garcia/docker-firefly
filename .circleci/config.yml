@@ -27,8 +27,25 @@ jobs:
       # deploy the image
       - run: bash .circleci/if_folder_has_changed.sh $FOLDER/$VERSION "docker push $DOCKER_USER/$FOLDER:$VERSION"
 
+
+  build-deploy/firefly-database-base:0.1:
+    machine: true
+    environment:
+      - FOLDER: "firefly-database-base"
+      - VERSION: 0.1
+    steps:
+      - checkout
+ 
+      # build the application image
+      - run: bash .circleci/if_folder_has_changed.sh $FOLDER/$VERSION "docker build -t $DOCKER_USER/$FOLDER:$VERSION $FOLDER/$VERSION/"
+ 
+      # deploy the image
+      - run: bash .circleci/if_folder_has_changed.sh $FOLDER/$VERSION "docker push $DOCKER_USER/$FOLDER:$VERSION"
+
 workflows:
   version: 2
   build-deploy-all:
     jobs:
       - build-deploy/firefly-api-base:0.1
+      - build-deploy/firefly-database-base:0.1
+

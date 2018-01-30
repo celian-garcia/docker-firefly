@@ -9,3 +9,4 @@ This repository contains docker files used by the Firefly project.
 | Docker image  | Tag     |
 | ------------- | ------- |
 | [celiangarcia/firefly-api-base](https://hub.docker.com/r/celiangarcia/firefly-api-base/) | 0.1 |
+| [celiangarcia/firefly-database-base](https://hub.docker.com/r/celiangarcia/firefly-database-base/) | 0.1 |
