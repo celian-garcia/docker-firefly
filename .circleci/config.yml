@@ -46,6 +46,6 @@ workflows:
   version: 2
   build-deploy-all:
     jobs:
-      - firefly-api-base:0.1:
-      - firefly-database-base:0.1:
+      - firefly-api-base:0.1
+      - firefly-database-base:0.1
 
