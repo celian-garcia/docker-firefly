@@ -13,7 +13,7 @@ jobs:
     steps:
       - run: "docker login -u $DOCKER_USER -p $DOCKER_PASS"
 
-  build-deploy/firefly-api-base:0.1:
+  firefly-api-base:0.1:
     machine: true
     environment:
       - FOLDER: "firefly-api-base"
@@ -27,7 +27,7 @@ jobs:
       # deploy the image
       - run: bash .circleci/if_folder_has_changed.sh $FOLDER/$VERSION "docker push $DOCKER_USER/$FOLDER:$VERSION"
 
-  build-deploy/firefly-database-base:0.1:
+  firefly-database-base:0.1:
     machine: true
     environment:
       - FOLDER: "firefly-database-base"
@@ -46,10 +46,10 @@ workflows:
   build-deploy-all:
     jobs:
       - login
-      - build-deploy/firefly-api-base:0.1:
+      - firefly-api-base:0.1:
           requires:
             - login
-      - build-deploy/firefly-database-base:0.1:
+      - firefly-database-base:0.1:
           requires:
             - login
 
