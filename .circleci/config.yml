@@ -8,11 +8,6 @@
 
 version: 2
 jobs:
-  login:
-    machine: true
-    steps:
-      - run: "docker login -u $DOCKER_USER -p $DOCKER_PASS"
-
   firefly-api-base:0.1:
     machine: true
     environment:
@@ -20,7 +15,10 @@ jobs:
       - VERSION: 0.1
     steps:
       - checkout
-
+      
+      # login to docker hub registry
+      - run: bash .circleci/if_folder_has_changed.sh $FOLDER/$VERSION "docker login -u $DOCKER_USER -p $DOCKER_PASS"
+      
       # build the application image
       - run: bash .circleci/if_folder_has_changed.sh $FOLDER/$VERSION "docker build -t $DOCKER_USER/$FOLDER:$VERSION $FOLDER/$VERSION/"
 
@@ -35,6 +33,9 @@ jobs:
     steps:
       - checkout
  
+      # login to docker hub registry
+      - run: bash .circleci/if_folder_has_changed.sh $FOLDER/$VERSION "docker login -u $DOCKER_USER     -p $DOCKER_PASS"
+
       # build the application image
       - run: bash .circleci/if_folder_has_changed.sh $FOLDER/$VERSION "docker build -t $DOCKER_USER/$FOLDER:$VERSION $FOLDER/$VERSION/"
  
@@ -45,11 +46,6 @@ workflows:
   version: 2
   build-deploy-all:
     jobs:
-      - login
       - firefly-api-base:0.1:
-          requires:
-            - login
       - firefly-database-base:0.1:
-          requires:
-            - login
 
