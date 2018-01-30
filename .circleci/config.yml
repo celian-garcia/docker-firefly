@@ -46,6 +46,11 @@ workflows:
   version: 2
   build-deploy-all:
     jobs:
-      - build-deploy/firefly-api-base:0.1
-      - build-deploy/firefly-database-base:0.1
+      - login
+      - build-deploy/firefly-api-base:0.1:
+	  requires:
+	    - login
+      - build-deploy/firefly-database-base:0.1:
+          requires:
+            - login
 
