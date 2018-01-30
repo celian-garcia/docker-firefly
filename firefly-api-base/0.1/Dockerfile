@@ -7,14 +7,12 @@ ENV TERM xterm-256color
 RUN wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add -
 RUN echo "deb http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -cs)-pgdg main 10" > /etc/apt/sources.list.d/pgdg.list
 
-
 # Add PostgreSQL's repository. It contains the most recent stable release
 RUN echo "deb http://apt.postgresql.org/pub/repos/apt/ precise-pgdg main" > /etc/apt/sources.list.d/pgdg.list
 RUN apt-get update \
  && DEBIAN_FRONTEND=noninteractive apt-get install -y build-essential wget libbz2-dev \
  && apt-get install -y vim libopencv-dev libcv-dev software-properties-common libpq-dev libpqtypes-dev postgresql-9.6 \
  postgresql-client-9.6 postgresql-contrib-9.6 net-tools
-
 
 # Google test installation
 RUN apt-get install -y libgtest-dev \
@@ -23,7 +21,6 @@ RUN apt-get install -y libgtest-dev \
     && cmake .. \
     && make -j 12 \
     && make install
-
     
 # Fly library installation
 ARG fly_version=0.2
@@ -38,7 +35,6 @@ RUN cd /usr/src \
     && make \
     && make install
     
-
 # Boost installation (inspired from lballabio docker file https://github.com/lballabio/dockerfiles/blob/master/boost/Dockerfile)
 ARG boost_version=1.64.0
 ARG boost_dir=boost_1_64_0
