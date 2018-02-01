@@ -66,4 +66,6 @@ workflows:
     jobs:
       - firefly-api-base:0.1
       - firefly-database-base:0.1
+      - firefly-api-base-sonar:0.1:
+          requires: firefly-api-base:0.1
 
