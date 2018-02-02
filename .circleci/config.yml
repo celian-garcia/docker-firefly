@@ -58,7 +58,7 @@ jobs:
       - run: bash .circleci/if_folder_has_changed.sh $FOLDER/$VERSION "docker build -t $DOCKER_USER/$FOLDER:$VERSION $FOLDER/$VERSION/"
 
       # deploy the image
-      #- run: bash .circleci/if_folder_has_changed.sh $FOLDER/$VERSION "docker push $DOCKER_USER/$FOLDER:$VERSION"
+      - run: bash .circleci/if_folder_has_changed.sh $FOLDER/$VERSION "docker push $DOCKER_USER/$FOLDER:$VERSION"
 
 workflows:
   version: 2
@@ -66,5 +66,7 @@ workflows:
     jobs:
       - firefly-api-base:0.1
       - firefly-database-base:0.1
-      - firefly-api-base-sonar:0.1
+      - firefly-api-base-sonar:0.1:
+          requires:
+            - firefly-api-base:0.1
 
