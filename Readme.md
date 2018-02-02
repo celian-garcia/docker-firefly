@@ -5,9 +5,12 @@
 This repository contains docker files used by the Firefly project. <br>
 Each `image/version` folder is automatically deployed if and only if there is a difference between **this folder** and **the same folder of the previous commit**.
 
+These dockerfiles purpose is basically to reduce compile time during the deployment of each firefly component.
+
 ## Docker Registry deployments
 
-| Docker image  | Tag     |
-| ------------- | ------- |
-| [celiangarcia/firefly-api-base](https://hub.docker.com/r/celiangarcia/firefly-api-base/) | 0.1 |
-| [celiangarcia/firefly-database-base](https://hub.docker.com/r/celiangarcia/firefly-database-base/) | 0.1 |
+| Docker image  | Tag     | Description |
+| :------------ | :------ | :---------- |
+| [celiangarcia/firefly-api-base](https://hub.docker.com/r/celiangarcia/firefly-api-base/) | 0.1 | Dependencies of the [firefly-api](https://github.com/celian-garcia/firefly-api) c++ server. |
+| [celiangarcia/firefly-api-base-sonar](https://hub.docker.com/r/celiangarcia/firefly-api-base-sonar/) | 0.1 | An extension of firefly-api-base, containing some tools which permits sonar to run. |
+| [celiangarcia/firefly-database-base](https://hub.docker.com/r/celiangarcia/firefly-database-base/) | 0.1 | Dependencies of [firefly-database](https://github.com/celian-garcia/firefly-database) PostgreSQL extension.
