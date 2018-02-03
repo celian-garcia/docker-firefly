@@ -10,4 +10,4 @@ RUN wget https://sonarcloud.io/static/cpp/build-wrapper-linux-x86.zip \
     && ln -s /usr/bin/build-wrapper-linux-x86-64 /usr/bin/build-wrapper \
     && rm -rf build-wrapper-linux-x86.zip build-wrapper-linux-x86
 
-RUN apt-get remove unzip
+RUN apt-get remove -y unzip
