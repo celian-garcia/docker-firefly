@@ -13,4 +13,5 @@ These dockerfiles purpose is basically to reduce compile time during the deploym
 | :------------ | :------ | :---------- |
 | [celiangarcia/firefly-api-base](https://hub.docker.com/r/celiangarcia/firefly-api-base/) | 0.1 | Dependencies of the [firefly-api](https://github.com/celian-garcia/firefly-api) c++ server. |
 | [celiangarcia/firefly-api-base-sonar](https://hub.docker.com/r/celiangarcia/firefly-api-base-sonar/) | 0.1 | An extension of firefly-api-base, containing some tools which permits sonar to run. |
-| [celiangarcia/firefly-database-base](https://hub.docker.com/r/celiangarcia/firefly-database-base/) | 0.1 | Dependencies of [firefly-database](https://github.com/celian-garcia/firefly-database) PostgreSQL extension.
+| [celiangarcia/firefly-database-base](https://hub.docker.com/r/celiangarcia/firefly-database-base/) | 0.1 | Dependencies of [firefly-database](https://github.com/celian-garcia/firefly-database) PostgreSQL extension. |
+| [celiangarcia/fly-base](https://hub.docker.com/r/celiangarcia/fly-base/) | 0.1 | Dependencies of [fly](https://github.com/celian-garcia/fly) c++ library.|
