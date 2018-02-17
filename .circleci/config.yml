@@ -34,7 +34,7 @@ jobs:
       - checkout
  
       # login to docker hub registry
-      - run: bash .circleci/if_folder_has_changed.sh $FOLDER/$VERSION "docker login -u $DOCKER_USER     -p $DOCKER_PASS"
+      - run: bash .circleci/if_folder_has_changed.sh $FOLDER/$VERSION "docker login -u $DOCKER_USER -p $DOCKER_PASS"
 
       # build the application image
       - run: bash .circleci/if_folder_has_changed.sh $FOLDER/$VERSION "docker build -t $DOCKER_USER/$FOLDER:$VERSION $FOLDER/$VERSION/"
@@ -52,7 +52,25 @@ jobs:
       - checkout
       
       # login to docker hub registry
-      - run: bash .circleci/if_folder_has_changed.sh $FOLDER/$VERSION "docker login -u $DOCKER_USER     -p $DOCKER_PASS"
+      - run: bash .circleci/if_folder_has_changed.sh $FOLDER/$VERSION "docker login -u $DOCKER_USER -p $DOCKER_PASS"
+
+      # build the application image
+      - run: bash .circleci/if_folder_has_changed.sh $FOLDER/$VERSION "docker build -t $DOCKER_USER/$FOLDER:$VERSION $FOLDER/$VERSION/"
+
+      # deploy the image
+      - run: bash .circleci/if_folder_has_changed.sh $FOLDER/$VERSION "docker push $DOCKER_USER/$FOLDER:$VERSION"
+
+  fly-base:0.1:
+    machine: true
+    environment:
+      - FOLDER: "fly-base"
+      - VERSION: 0.1
+
+    steps:
+      - checkout
+      
+      # login to docker hub registry
+      - run: bash .circleci/if_folder_has_changed.sh $FOLDER/$VERSION "docker login -u $DOCKER_USER -p $DOCKER_PASS"
 
       # build the application image
       - run: bash .circleci/if_folder_has_changed.sh $FOLDER/$VERSION "docker build -t $DOCKER_USER/$FOLDER:$VERSION $FOLDER/$VERSION/"
@@ -64,6 +82,7 @@ workflows:
   version: 2
   build-deploy-all:
     jobs:
+      - fly-base:0.1
       - firefly-api-base:0.1
       - firefly-database-base:0.1
       - firefly-api-base-sonar:0.1:
