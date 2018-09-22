@@ -35,12 +35,14 @@ These dockerfiles purpose is basically to reduce compile time during the deploym
 - postgresql : `9.6`
 - gtest : `latest`
 - opencv : `latest`
+- nlohmann::json : `3.2.0`
 
 #### Versions correspondance
 | firefly-api-base version | firefly-api version |
 | :----------------------- | :------------------ |
-| 0.1  [<img src="https://github.com/celian-garcia/firefly-assets/blob/master/external/docker_logo_20.svg" width="20">](firefly-api-base/0.1/Dockerfile)  | until 0.6  |
-| 0.2  [<img src="https://github.com/celian-garcia/firefly-assets/blob/master/external/docker_logo_20.svg" width="20">](firefly-api-base/0.2/Dockerfile)  | from 0.7   |
+| 0.1  [<img src="https://github.com/celian-garcia/firefly-assets/blob/master/external/docker_logo_20.svg" width="20">](firefly-api-base/0.1/Dockerfile)  | until 0.6  	|
+| 0.2  [<img src="https://github.com/celian-garcia/firefly-assets/blob/master/external/docker_logo_20.svg" width="20">](firefly-api-base/0.2/Dockerfile)  | 0.7   		|
+| 0.3  [<img src="https://github.com/celian-garcia/firefly-assets/blob/master/external/docker_logo_20.svg" width="20">](firefly-api-base/0.3/Dockerfile)  | from 0.8   	|
 
 
 ## firefly-api-base-sonar
@@ -52,8 +54,9 @@ These dockerfiles purpose is basically to reduce compile time during the deploym
 #### Versions correspondance
 | firefly-api-base-sonar version | firefly-api version |
 | :----------------------------- | :------------------ |
-| 0.1  [<img src="https://github.com/celian-garcia/firefly-assets/blob/master/external/docker_logo_20.svg" width="20">](firefly-api-base-sonar/0.1/Dockerfile)  | until 0.6   |
-| 0.2  [<img src="https://github.com/celian-garcia/firefly-assets/blob/master/external/docker_logo_20.svg" width="20">](firefly-api-base-sonar/0.2/Dockerfile)  | from 0.7    |
+| 0.1  [<img src="https://github.com/celian-garcia/firefly-assets/blob/master/external/docker_logo_20.svg" width="20">](firefly-api-base-sonar/0.1/Dockerfile)  | until 0.6   	|
+| 0.2  [<img src="https://github.com/celian-garcia/firefly-assets/blob/master/external/docker_logo_20.svg" width="20">](firefly-api-base-sonar/0.2/Dockerfile)  | 0.7    		|
+| 0.3  [<img src="https://github.com/celian-garcia/firefly-assets/blob/master/external/docker_logo_20.svg" width="20">](firefly-api-base-sonar/0.3/Dockerfile)  | from 0.8    	|
 
 
 ## firefly-database-base
@@ -84,11 +87,15 @@ These dockerfiles purpose is basically to reduce compile time during the deploym
 - 0.1 (initialization)
 - 0.2
   - update fly version to 0.3
+- 0.3
+  - integrated nlohmann::json 3.2.0
 
 ### firefly-api-base-sonar
 - 0.1 (initialization)
 - 0.2
   - Use version 0.2 of firefly-api-base
+- 0.3
+  - Use version 0.3 of firefly-api-base
 
 ### firefly-database-base
 - 0.1 (initialization)
