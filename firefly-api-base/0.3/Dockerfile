@@ -11,7 +11,7 @@ RUN echo "deb http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -cs)-pgdg m
 RUN echo "deb http://apt.postgresql.org/pub/repos/apt/ precise-pgdg main" > /etc/apt/sources.list.d/pgdg.list
 RUN apt-get update \
  && DEBIAN_FRONTEND=noninteractive apt-get install -y build-essential wget libbz2-dev \
- && apt-get install -y vim software-properties-common libpq-dev libpqtypes-dev postgresql-9.6 \
+ && apt-get install -y unzip vim software-properties-common libpq-dev libpqtypes-dev postgresql-9.6 \
  postgresql-client-9.6 postgresql-contrib-9.6 net-tools
 
 # Google test installation
