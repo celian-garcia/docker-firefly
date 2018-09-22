@@ -161,4 +161,8 @@ workflows:
       - firefly-api-base-sonar:0.2:
           requires:
             - firefly-api-base:0.2
+      - firefly-api-base:0.3
+      - firefly-api-base-sonar:0.3:
+          requires:
+            - firefly-api-base:0.3
       - firefly-database-base:0.1
