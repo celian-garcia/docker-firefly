@@ -34,7 +34,7 @@ These dockerfiles purpose is basically to reduce compile time during the deploym
 - fly : `v0.3`
 - postgresql : `9.6`
 - gtest : `latest`
-- opencv : `latest`
+- opencv : `3.4.3`
 - nlohmann::json : `3.2.0`
 
 #### Versions correspondance
@@ -89,6 +89,7 @@ These dockerfiles purpose is basically to reduce compile time during the deploym
   - update fly version to 0.3
 - 0.3
   - integrated nlohmann::json 3.2.0
+  - changed a bit the way to install opencv 3.4.3
 
 ### firefly-api-base-sonar
 - 0.1 (initialization)

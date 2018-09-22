@@ -11,7 +11,7 @@ RUN echo "deb http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -cs)-pgdg m
 RUN echo "deb http://apt.postgresql.org/pub/repos/apt/ precise-pgdg main" > /etc/apt/sources.list.d/pgdg.list
 RUN apt-get update \
  && DEBIAN_FRONTEND=noninteractive apt-get install -y build-essential wget libbz2-dev \
- && apt-get install -y vim libopencv-dev libcv-dev software-properties-common libpq-dev libpqtypes-dev postgresql-9.6 \
+ && apt-get install -y vim software-properties-common libpq-dev libpqtypes-dev postgresql-9.6 \
  postgresql-client-9.6 postgresql-contrib-9.6 net-tools
 
 # Google test installation
@@ -19,6 +19,17 @@ RUN apt-get install -y libgtest-dev \
     && cd /usr/src/gtest \
     && mkdir build && cd build \
     && cmake .. \
+    && make -j 12 \
+    && make install
+
+# OpenCV installation
+ARG opencv_version=3.4.3
+ENV opencv_version ${opencv_version}
+RUN wget https://github.com/opencv/opencv/archive/${opencv_version}.zip \
+    && unzip ${opencv_version}.zip \
+    && cd opencv-${opencv_version} \
+    && mkdir build && cd build \
+    && cmake -D CMAKE_BUILD_TYPE=Release -D CMAKE_INSTALL_PREFIX=/usr/local .. \
     && make -j 12 \
     && make install
 
